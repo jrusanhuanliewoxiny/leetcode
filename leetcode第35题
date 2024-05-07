@@ -1,0 +1,39 @@
+//执行用时分布3ms 打败72.67%
+//消耗内存分布11.80mb,打败56.25%
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int left=0;
+        int right=nums.size()-1;
+        int middle;
+        while(left<=right){
+            middle=left+(right-left)/2;
+            if(nums[middle]>target){
+                right=middle-1;
+                if(left>=right){
+                    if(target>nums[left]){
+                        return left+1;
+                    }
+                   if(target<nums[left]){
+                    return left;
+                   }
+                }
+
+            }else if(nums[middle]<target){
+                left=middle+1;
+                if(left>=right){
+                    if(target<nums[right]){
+                        return right;
+                    }
+                    if(target>nums[right]){
+                        return right+1;
+                    }
+                }
+            }else{
+                return middle;
+            }
+        }
+        
+    return -1;
+    }
+};
