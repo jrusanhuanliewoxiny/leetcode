@@ -1,3 +1,4 @@
+//这道题当时没想出来，看的灵山哥的解析才弄出来。
 class Solution {
     int lower_bound(vector<int>& nums,int target){
         int left=0;
