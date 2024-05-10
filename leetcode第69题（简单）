@@ -1,0 +1,31 @@
+时间复杂度：5ms 只打败了26.15%
+空间复杂度：7.33mb  只打败了41.86%
+做法并不完美，只是基础的二分法。
+class Solution {
+public:
+    int mySqrt(int x) {
+       long long int left=0;
+       long long int right=x;
+        while(left<=right){
+            long long int middle=left+(right-left)/2;
+            if(middle*middle>x){
+                right=middle-1;
+            }
+            if(middle*middle<x){
+                if((middle+1)*(middle+1)>x){
+                    return middle;
+
+                }
+                left=middle+1;
+            
+            }
+            if(middle*middle==x){
+                return middle;
+            }
+
+        }
+        return 0;
+
+
+    }
+};
