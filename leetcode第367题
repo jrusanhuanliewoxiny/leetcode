@@ -1,0 +1,27 @@
+时间复杂度：4ms,打败4.65%
+空间复杂度：6.98mb,打败27.08%
+这题被完爆了，只打败了这么点人。还需要好好优化下。
+学无止境
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+       long long  int left=0;
+        long long int right=num/2;
+        while(left<=right){
+          long long int middle=left+(right-left)/2;
+          if(middle*middle>num){
+            right=middle-1;
+          }else if(middle*middle<num){
+            if((middle+1)*(middle+1)>num){
+                return false;
+            }
+            left=middle+1;
+          }else if(middle*middle==num){
+            return true;
+          }
+        }
+        return true;
+
+
+    }
+};
