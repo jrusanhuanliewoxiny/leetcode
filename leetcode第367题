@@ -25,3 +25,28 @@ public:
 
     }
 };
+这是别人的：我发现自己有些条件重复判断了导致时间和空间复杂度很高。
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+        if (num == 0 || num == 1)
+            return true;
+        int left = 0, right = num;
+        int middle;
+        long square;
+        while (left <= right) {
+            middle = left + (right - left) / 2;
+            square = (long)middle * middle;
+            if (square < num) {
+                left = middle + 1;
+            } 
+            else if (square > num) {
+                right = middle - 1;
+            }
+            else {
+                return true;
+            } 
+        }
+        return false;
+    }
+};
