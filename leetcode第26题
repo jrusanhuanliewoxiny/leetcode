@@ -1,0 +1,17 @@
+时间复杂度：0%
+空间复杂度：10.16mb
+用双指针
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int fast=0;
+        int slow=0;
+        for(int fast=0;fast<nums.size();fast++){
+            if(nums[fast]!=val){
+                nums[slow++]=nums[fast];
+            }
+        }
+        return slow;
+
+    }
+};
