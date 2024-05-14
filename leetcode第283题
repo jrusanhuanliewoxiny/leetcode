@@ -1,0 +1,37 @@
+这题一开始没想出来，看的题解，就不列出时间和空间了。但这种方法时间复杂度有点大
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int fast=0;
+        int slow=0;
+        while(fast<nums.size()){
+            if(nums[fast]!=0){
+                swap(nums[slow],nums[fast]);
+                slow++;
+            }
+            fast++;
+
+            
+        }
+        
+
+    }
+};
+
+优解：这个跟我当初想的类似，但在初步运行的时候我自己写的有误，运行了几次就放弃了。ps:不能浅尝辄止。
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int n = nums.size();
+        int count = 0;
+        for (int num: nums) {
+            if (num != 0){
+                nums[count] = num;
+                count += 1;
+            }
+        }
+        for (int i = count; i < n; ++i) {
+            nums[i] = 0;
+        }
+    }
+};
