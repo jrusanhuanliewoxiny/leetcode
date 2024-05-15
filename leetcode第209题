@@ -1,0 +1,29 @@
+自己刚开始想的，数少的话可以通过，多的话就超出时间限制了，while for循环嵌套太多。
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int i=1;
+        while(i<=nums.size()){
+            int j;
+            for(j=0;j<=nums.size()-i;j++){
+                int sum=0;
+                for(int k=j;k<j+i;k++){
+                    sum=sum+nums[k];
+                }
+                 if(sum>=target){
+                    return i;
+                 }
+                 if(sum<target&&i==nums.size()){
+                    return 0;
+                  }
+                
+            
+            }
+            i++;
+
+        }
+        return i;
+
+
+    }
+};
