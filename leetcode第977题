@@ -16,4 +16,29 @@ public:
 
     }
 };
-双指针：
+双指针：这个方法真的真的被安利到了/
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int k=nums.size()-1;
+        int slow;
+        int fast=nums.size()-1;
+        vector<int>A(nums.size(),0);
+        for(slow=0;slow<=fast;){
+            if(nums[slow]*nums[slow]<nums[fast]*nums[fast]){
+                A[k]=nums[fast]*nums[fast];
+                k--;
+                fast--;
+            }else if(nums[slow]*nums[slow]>=nums[fast]*nums[fast]){
+                A[k]=nums[slow]*nums[slow];
+                k--;
+                slow++;
+
+            }
+           
+        }
+        return A;
+    }
+   
+       
+};
