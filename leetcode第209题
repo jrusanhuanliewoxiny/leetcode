@@ -27,3 +27,30 @@ public:
 
     }
 };
+优化过的滑动窗口，只有两层循环了
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int left=0;
+        int right;
+        int n=nums.size();
+        int sum=0;
+        int ans=n+1;
+        for(right=0;right<n;right++){
+            sum=sum+nums[right];
+            while(sum-nums[left]>=target){
+                sum=sum-nums[left];
+                left++;
+                
+            }
+            if(sum>=target){
+                ans=min(ans,right-left+1);
+              }
+            
+            
+        }
+        return ans<=n?ans:0;
+        
+        
+    }
+};
