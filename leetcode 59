@@ -1,0 +1,49 @@
+时间复杂度：0ms
+空间复杂度：6.13mb，打败25.44%
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *returnColumnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ */
+int** generateMatrix(int n, int* returnSize, int** returnColumnSizes) {
+    *returnSize=n;
+    *returnColumnSizes = (int*)malloc(sizeof(int) * n);
+    int** nums = (int**)malloc(sizeof(int*) * n);
+    int i;
+    for(i = 0; i < n; i++) {
+        nums[i] = (int*)malloc(sizeof(int) * n);
+        (*returnColumnSizes)[i] = n;
+    }
+    int startx=0;
+    int starty=0;
+    int offside=1;
+    int cout=1;
+    int loop=n/2;
+    while(loop){
+        int k=startx;
+        int j=starty;
+        for(;j<n-offside;j++){
+            nums[k][j]=cout++;
+         }
+         for(;k<n-offside;k++){
+            nums[k][j]=cout++;
+         }
+         for(;j>starty;j--){
+            nums[k][j]=cout++;
+         }
+         for(;k>startx;k--){
+            nums[k][j]=cout++;
+
+        }
+        startx++;
+        starty++;
+        offside++;
+        loop--;
+    }
+    if(n%2!=0){
+        nums[n/2][n/2]=cout++;
+    }
+    return nums;
+
+    
+}
